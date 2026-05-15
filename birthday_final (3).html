@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday 🎀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        /* ══ RIBBON BUTTONS ══ */
+        
+        .ribbon-btn {
+            padding: 13px 32px;
+            font-size: 16px;
+            border: none;
+            clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
+            background: linear-gradient(135deg, #ffb6d9, #ff85b3, #ffb6d9);
+            color: white;
+            cursor: pointer;
+            font-family: 'Special Elite', cursive;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 18px rgba(255, 105, 180, 0.4);
+            transition: transform 0.15s, box-shadow 0.15s;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ribbon-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 8px 24px rgba(255, 105, 180, 0.55);
+        }
+        
+        .ribbon-btn:active {
+            transform: scale(0.96);
+        }
+        /* ══ RESET ══ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* ══ PAGES ══ */
+        
+        .page {
+            display: none !important;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+        
+        #page1.active {
+            display: block !important;
+        }
+        
+        #page2.active {
+            display: block !important;
+        }
+        
+        #page3.active {
+            display: flex !important;
+        }
+        
+        #page4.active {
+            display: flex !important;
+        }
+        
+        #page5.active {
+            display: flex !important;
+        }
+        
+        #page6.active {
+            display: flex !important;
+        }
+        /* ══ PAGE 1 — VIDEO ══ */
+        
+        #page1 {
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        #page1 video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        #page1 .container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        #nextBtn {
+            padding: 14px 36px;
+            border: none;
+            clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
+            background: linear-gradient(135deg, #ffb6d9, #ff85b3, #ffb6d9);
+            color: white;
+            cursor: pointer;
+            display: none;
+            font-family: 'Special Elite', cursive;
+            font-size: 18px;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+            animation: ribbonPulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes ribbonPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.04);
+            }
+        }
+        /* ══ PAGE 2 — CLAW ══ */
+        
+        #page2 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(rgba(255, 238, 245, 0.55), rgba(255, 238, 245, 0.55)), url('bgclaw.jpg') center/cover no-repeat;
+            padding: 30px 20px;
+        }
+        
+        #page2 h2 {
+            color: #ff6fa5;
+            margin-bottom: 12px;
+        }
+        /* pixel machine box */
+        
+        .machine {
+            width: 320px;
+            margin: 0 auto 16px;
+            background: white;
+            border: 3px solid #f9a8c9;
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 4px 4px 0px #f9a8c9;
+        }
+        
+        .machine-bar {
+            width: 100%;
+            height: 28px;
+            background: #f9a8c9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: white;
+        }
+        
+        .machine-bar-title {
+            letter-spacing: 1px;
+        }
+        
+        .machine-bar-btns {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .machine-bar-btns span {
+            width: 16px;
+            height: 16px;
+            border: 2px solid white;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: white;
+            font-weight: bold;
+        }
+        /* machine play area */
+        
+        .machine-area {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toy {
+            position: absolute;
+            font-size: 40px;
+            user-select: none;
+        }
+        
+        #string {
+            width: 4px;
+            height: 80px;
+            background: #999;
+            position: absolute;
+            top: 0;
+            left: 158px;
+            transition: all 0.4s ease;
+        }
+        
+        #claw {
+            position: absolute;
+            top: 75px;
+            left: 135px;
+            width: 50px;
+            height: 50px;
+            transition: all 0.4s ease;
+        }
+        
+        .center {
+            width: 20px;
+            height: 20px;
+            background: #b8e0ff;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        
+        .arm {
+            width: 16px;
+            height: 16px;
+            border: 4px solid #b8e0ff;
+            position: absolute;
+            border-top: none;
+            border-left: none;
+            border-radius: 0 0 10px 0;
+        }
+        
+        .left {
+            transform: rotate(135deg);
+            left: 0;
+            top: 18px;
+        }
+        
+        .right {
+            transform: rotate(-45deg);
+            right: 0;
+            top: 18px;
+        }
+        
+        .controls {
+            margin: 10px 0;
+        }
+        
+        .controls button {
+            padding: 10px 14px;
+            margin: 4px;
+            border: none;
+            border-radius: 14px;
+            background: #ffd1e3;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: Arial, sans-serif;
+        }
+        
+        .controls button:hover {
+            transform: scale(1.08);
+        }
+        
+        #catchBtn {
+            background: #ff9fc5;
+            color: white;
+        }
+        
+        #result {
+            font-size: 18px;
+            color: #ff6fa5;
+            min-height: 26px;
+            margin: 8px 0;
+        }
+        
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            border-radius: 2px;
+            animation: confFall 3s linear forwards;
+            z-index: 9999;
+        }
+        
+        @keyframes confFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        /* ══ PAGE 3 — FLIP CARD ══ */
+        
+        #page3 {
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 24px;
+            background: #ffeef5;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        #page3::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 0 0, #ffd8e8 12px, transparent 13px), radial-gradient(circle at 25px 25px, #ffd8e8 12px, transparent 13px);
+            background-size: 50px 50px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        .card {
+            width: 320px;
+            height: 420px;
+            perspective: 1200px;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: 1s;
+            transform-style: preserve-3d;
+        }
+        
+        .card:hover .card-inner,
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            backface-visibility: hidden;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-front {
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .card-front h1 {
+            color: #ff4f8b;
+            font-size: 48px;
+            font-family: cursive;
+            text-align: center;
+        }
+        
+        .card-front p {
+            margin-top: 10px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .card-back {
+            background: linear-gradient(to bottom, #fff0f6, #ffe3ef);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cake3d {
+            position: relative;
+            width: 160px;
+            height: 180px;
+        }
+        
+        .layer1,
+        .layer2 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 14px;
+        }
+        
+        .layer1 {
+            width: 160px;
+            height: 70px;
+            background: #ff9ec4;
+            bottom: 0;
+            box-shadow: inset 0 -8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .layer2 {
+            width: 120px;
+            height: 55px;
+            background: #ffbdd7;
+            bottom: 65px;
+            box-shadow: inset 0 -8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icing {
+            position: absolute;
+            width: 130px;
+            height: 16px;
+            background: white;
+            border-radius: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 110px;
+        }
+        
+        .candle3d {
+            position: absolute;
+            width: 14px;
+            height: 45px;
+            background: #7dd3fc;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 125px;
+            border-radius: 10px;
+        }
+        
+        .flame3d {
+            position: absolute;
+            width: 18px;
+            height: 28px;
+            background: #ffb300;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            bottom: 168px;
+            animation: flicker3d 1s infinite;
+        }
+        
+        .flame3d::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 16px;
+            background: #fff176;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+        }
+        
+        @keyframes flicker3d {
+            0% {
+                transform: translateX(-50%) rotate(45deg) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) rotate(45deg) scale(1.08);
+            }
+            100% {
+                transform: translateX(-50%) rotate(45deg) scale(1);
+            }
+        }
+        
+        .message {
+            margin-top: 35px;
+            text-align: center;
+            padding: 0 30px;
+        }
+        
+        .message h2 {
+            color: #ff4f8b;
+            margin-bottom: 10px;
+        }
+        
+        .message p {
+            color: #555;
+            line-height: 1.5;
+        }
+        /* ══ PAGE 4 — PRINTER ══ */
+        
+        #page4 {
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 0;
+            font-family: Arial, sans-serif;
+            background: #f5efe7;
+            overflow: hidden;
+        }
+        
+        #page4::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 0 0, #ebe3d8 12px, transparent 13px), radial-gradient(circle at 25px 25px, #ebe3d8 12px, transparent 13px);
+            background-size: 50px 50px;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+        
+        .printer-container {
+            width: 320px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .printer-title {
+            margin-bottom: 20px;
+        }
+        
+        .printer-title h1 {
+            font-size: 36px;
+            color: #b5165a;
+            font-family: cursive;
+            font-weight: normal;
+            line-height: 1.2;
+        }
+        
+        .printer {
+            width: 290px;
+            height: 58px;
+            background: #ececec;
+            margin: auto;
+            border-radius: 14px;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08), inset 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .slot {
+            width: 190px;
+            height: 10px;
+            background: #222;
+            border-radius: 20px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .paper-area {
+            width: 230px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            top: -5px;
+        }
+        
+        .photo-strip-printer {
+            background: white;
+            padding: 14px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-88%);
+            transition: transform 2.5s ease;
+        }
+        
+        .photo-strip-printer.show {
+            transform: translateY(0);
+        }
+        
+        .photo-slot-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            display: block;
+        }
+        
+        .photo-slot-img:last-child {
+            margin-bottom: 0;
+        }
+        
+        #printBtn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #00d8ff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: Arial, sans-serif;
+        }
+        
+        #printBtn:hover {
+            transform: scale(1.05);
+        }
+        
+        #printerNextBtn {
+            margin-top: 14px;
+            display: none;
+        }
+        /* ══ PAGE 5 — SURPRISE ══ */
+        
+        #page5 {
+            height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(rgba(255, 238, 245, 0.45), rgba(255, 238, 245, 0.45)), url('background.jpg') center/cover no-repeat;
+        }
+        
+        #page5 h2 {
+            color: #ff6fa5;
+            font-size: 28px;
+        }
+        
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .overlay img {
+            width: 80vw;
+            max-width: 900px;
+            height: auto;
+            max-height: 75vh;
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            animation: popAnim 0.35s ease;
+        }
+        
+        @keyframes popAnim {
+            from {
+                transform: scale(0.2);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        /* ══ PAGE 6 — ENVELOPE ══ */
+        
+        #page6 {
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            background: linear-gradient(rgba(255, 238, 245, 0.45), rgba(255, 238, 245, 0.45)), url('backgroundenv.jpg') center/cover no-repeat;
+            overflow: hidden;
+        }
+        
+        #page6 h2 {
+            color: #310614;
+            font-family: Arial, sans-serif;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 28px;
+            animation: floatFlower 4s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        @keyframes floatFlower {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        
+        .envelope {
+            width: 320px;
+            height: 210px;
+            background: #ffd1e3;
+            position: relative;
+            border-radius: 18px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            z-index: 1;
+        }
+        
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 105px solid #ffb6d5;
+            transform-origin: top;
+            transition: 0.5s;
+            z-index: 5;
+        }
+        
+        .letter-env {
+            position: absolute;
+            width: 260px;
+            height: 360px;
+            background: white;
+            left: 30px;
+            top: 20px;
+            border-radius: 14px;
+            padding: 22px;
+            color: #ff6fa5;
+            font-family: 'Special Elite', cursive;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: left;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: 0.8s ease;
+            z-index: 1;
+            opacity: 0;
+            overflow: auto;
+        }
+        
+        .envelope.open::before {
+            transform: rotateX(180deg);
+        }
+        
+        .envelope.open .letter-env {
+            transform: translateY(-290px);
+            opacity: 1;
+            z-index: 10;
+        }
+        
+        .heart-float {
+            position: fixed;
+            font-size: 22px;
+            animation: floatHeart 2s linear forwards;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        @keyframes floatHeart {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-150px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ PAGE 1 — VIDEO ══ -->
+    <div class="page active" id="page1">
+        <video id="bgVideo" autoplay muted playsinline>
+    <source src="vid(1)(1).mp4" type="video/mp4">
+  </video>
+        <div class="container">
+            <button id="nextBtn" onclick="playClick();goTo(2)">Next 💖</button>
+        </div>
+    </div>
+
+    <!-- ══ PAGE 2 — CLAW MACHINE ══ -->
+    <div class="page" id="page2">
+        <h2>💖 Get your toys op !! 💖</h2>
+
+        <div class="machine">
+            <div class="machine-bar">
+                <span class="machine-bar-title">claw machine</span>
+                <div class="machine-bar-btns">
+                    <span>_</span>
+                    <span>□</span>
+                    <span>✕</span>
+                </div>
+            </div>
+            <div class="machine-area">
+                <div class="toy" style="top:230px;left:50px;">🧸</div>
+                <div class="toy" style="top:230px;left:125px;">🐰</div>
+                <div class="toy" style="top:230px;left:200px;">🐱</div>
+                <div id="string"></div>
+                <div id="claw">
+                    <div class="center"></div>
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="playClick();moveLeft()">⬅ Left</button>
+            <button onclick="playClick();moveRight()">Right ➡</button>
+            <button onclick="playClick();dropClaw()">⬇ Drop</button>
+            <button id="catchBtn" onclick="playClick();catchToy()">🎯 Catch</button>
+        </div>
+        <div id="result"></div>
+        <button id="clawNextBtn" class="ribbon-btn" onclick="playClick();goTo(3)">Next 💖</button>
+    </div>
+
+    <!-- ══ PAGE 3 — FLIP CARD ══ -->
+    <div class="page" id="page3">
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h1>Happy Birthday</h1>
+                    <p>Tap to flip 🎀</p>
+                </div>
+                <div class="card-back">
+                    <div class="cake3d">
+                        <div class="layer1"></div>
+                        <div class="layer2"></div>
+                        <div class="icing"></div>
+                        <div class="candle3d"></div>
+                        <div class="flame3d"></div>
+                    </div>
+                    <div class="message">
+                        <h2>Make a Wish twin !! ✨</h2>
+                        <p>I'm wishing you happiness, good health, love, and beautiful memories and stay being my BestFriend until jannah , Aaamiin 💖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="cardNextBtn" class="ribbon-btn" onclick="playClick();goTo(4)">Next 📸</button>
+    </div>
+
+    <!-- ══ PAGE 4 — PHOTO PRINTER ══ -->
+    <div class="page" id="page4">
+        <div class="printer-container">
+            <div class="printer-title">
+                <h1>Who's the Birthday's Girl?</h1>
+            </div>
+            <div class="printer">
+                <div class="slot"></div>
+            </div>
+            <div class="paper-area">
+                <div class="photo-strip-printer" id="printerStrip">
+                    <img class="photo-slot-img" src="Photobooth1.JPG">
+                    <img class="photo-slot-img" src="Photobooth2.JPG">
+                </div>
+            </div>
+            <button id="printBtn" class="ribbon-btn" onclick="playClick();printPhotos()">Press Here !!</button>
+            <br>
+            <button id="printerNextBtn" class="ribbon-btn" onclick="playClick();goTo(5)">Next Surprise 🎉</button>
+        </div>
+    </div>
+
+    <!-- ══ PAGE 5 — SURPRISE POP ══ -->
+    <div class="page" id="page5">
+        <h2>🎉 Sila Buka untuk hadiah 🎉</h2>
+        <button id="openSurpriseBtn" class="ribbon-btn" onclick="playClick();openPic()">Open Surprise 💝</button>
+        <div class="overlay" id="overlay">
+            <img src="gambar.jpg" alt="surprise">
+            <button class="ribbon-btn" onclick="playClick();goToLetter()">💌 Press here for your letter!</button>
+        </div>
+    </div>
+
+    <!-- ══ PAGE 6 — ENVELOPE LETTER ══ -->
+    <div class="page" id="page6">
+        <h2>Click The Envelope !</h2>
+        <div class="flower" style="top:120px;left:25%;">🎀</div>
+        <div class="flower" style="top:180px;right:23%;">🎀</div>
+        <div class="flower" style="bottom:140px;left:20%;">🎀</div>
+        <div class="flower" style="bottom:170px;right:20%;">🎀</div>
+        <div class="flower" style="top:90px;right:35%;">🎀</div>
+        <div class="envelope" onclick="openLetter(this)">
+            <div class="letter-env">
+                hii twinnie 💖<br><br> HEHE comel tak macam ni , i just want to say happy birthday my love , aku srs sayang kauuu more than you ever imagine 🌸<br><br> even on tiring days, you still keep going to listen to my boring day and gossip about
+                those man hahahah and that is really something that make me remember you and show that you really my best friend forever !! 🧸<br><br> I hope happiness and succes always finds you including the soft little moments today ✨<br><br> and whenever
+                life feels heavy, i hope you remember that soft hearts deserve soft days too 🌷<br><br>
+                <span style="color:#c084fc;">[ Sincerely, Julaikha Yang Cantik 💜 ]</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ══ CUTE CLICK SOUND ══ */
+        function playClick() {
+            const ctx = new(window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.3, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.15);
+        }
+
+        /* ══ PAGE NAV ══ */
+        function goTo(n) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + n).classList.add('active');
+        }
+
+        /* PAGE 1 — VIDEO */
+        const video = document.getElementById("bgVideo");
+        const nextBtn = document.getElementById("nextBtn");
+        video.addEventListener("ended", () => {
+            nextBtn.style.display = "block";
+        });
+        setTimeout(() => {
+            nextBtn.style.display = "block";
+        }, 15000);
+
+        /* PAGE 2 — CLAW */
+        let clawX = 135,
+            clawY = 75,
+            dropped = false;
+
+        function updateClaw() {
+            document.getElementById("claw").style.left = clawX + "px";
+            document.getElementById("claw").style.top = clawY + "px";
+            document.getElementById("string").style.left = (clawX + 23) + "px";
+            document.getElementById("string").style.height = clawY + "px";
+        }
+
+        function moveLeft() {
+            if (clawX > 20) {
+                clawX -= 20;
+                updateClaw();
+            }
+        }
+
+        function moveRight() {
+            if (clawX < 250) {
+                clawX += 20;
+                updateClaw();
+            }
+        }
+
+        function dropClaw() {
+            clawY = 210;
+            dropped = true;
+            updateClaw();
+        }
+
+        function catchToy() {
+            if (!dropped) {
+                document.getElementById("result").innerHTML = "💭 drop the claw first!";
+                return;
+            }
+            const win = [50, 135, 220].some(pos => Math.abs(clawX - pos) < 25);
+            document.getElementById("result").innerHTML = win ? "🎉 YEAYYY you got one!!" : "💔 missed it, try again~";
+            if (win) launchConfetti();
+            clawY = 75;
+            dropped = false;
+            updateClaw();
+        }
+
+        function launchConfetti() {
+            for (let i = 0; i < 80; i++) {
+                const p = document.createElement("div");
+                p.className = "confetti-piece";
+                p.style.left = Math.random() * 100 + "vw";
+                p.style.background = `hsl(${Math.random()*360},100%,75%)`;
+                p.style.animationDuration = (Math.random() * 2 + 2) + "s";
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 3000);
+            }
+        }
+
+        /* PAGE 4 — PRINTER */
+        let printed = false;
+
+        function printPhotos() {
+            document.getElementById("printerStrip").classList.add("show");
+            if (!printed) {
+                printed = true;
+                setTimeout(() => {
+                    document.getElementById("printerNextBtn").style.display = "inline-block";
+                }, 2600);
+            }
+        }
+
+        /* PAGE 5 — SURPRISE */
+        function openPic() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+
+        function goToLetter() {
+            document.getElementById("overlay").style.display = "none";
+            goTo(6);
+        }
+
+        /* PAGE 6 — ENVELOPE */
+        function openLetter(envelope) {
+            envelope.classList.toggle("open");
+            for (let i = 0; i < 15; i++) {
+                const h = document.createElement("div");
+                h.className = "heart-float";
+                h.innerHTML = "💖";
+                h.style.left = (envelope.offsetLeft + 80 + Math.random() * 150) + "px";
+                h.style.top = envelope.offsetTop + "px";
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 2000);
+            }
+        }
+    </script>
+</body>
+
+</html>
